@@ -68,7 +68,7 @@ export default {
   },
   components: { ChatMessage, ChatInput },
   async mounted() {
-    // get last 25 messages from firebase
+    // get last 25 previous messages from firebase
     const q = query(
       collection(db, "messages"),
       orderBy("created", "desc"),
