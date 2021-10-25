@@ -29,6 +29,7 @@ This app uses:
   <li>Socket.io</li>
   <li>Firebase (to retrieve previous messages)</li>
   <li>Socket.io chat server https://github.com/hhashimi/socket-io-chat-server</li>
+  <li>Tailwind CSS</li>
 </ul>
 
 <img src='https://user-images.githubusercontent.com/18535797/138693987-179e09e9-f12a-4e8c-84bb-996d7fba0280.png' width="400"/>
