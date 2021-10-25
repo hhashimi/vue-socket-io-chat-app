@@ -45,7 +45,19 @@ export default {
   },
   methods: {
     async messageEntered(msg) {
-      socket.emit("chat-message", { text: msg, username: this.characterName });
+      socket.emit("chat-message", {
+        text: msg,
+        username: this.characterName,
+        created: new Date().toLocaleString("en-US", {
+          weekday: "short",
+          day: "numeric",
+          year: "numeric",
+          month: "long",
+          hour: "numeric",
+          minute: "numeric",
+          second: "numeric",
+        }), // TODO: set message created in socket server
+      });
 
       // save message in firestore collection
       try {
