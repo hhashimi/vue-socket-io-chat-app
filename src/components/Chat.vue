@@ -24,6 +24,17 @@ import { uniqueNamesGenerator, starWars } from "unique-names-generator";
 import ChatMessage from "./ChatMessage.vue";
 import ChatInput from "./ChatInput.vue";
 
+import { db } from "../main";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  query,
+  getDocs,
+  orderBy,
+  limit,
+} from "firebase/firestore";
+
 const socket = io("http://localhost:8080/");
 
 export default {
@@ -33,8 +44,19 @@ export default {
     };
   },
   methods: {
-    messageEntered(msg) {
+    async messageEntered(msg) {
       socket.emit("chat-message", { text: msg, username: this.characterName });
+
+      // save message in firestore collection
+      try {
+        await addDoc(collection(db, "messages"), {
+          text: msg,
+          username: this.characterName,
+          created: serverTimestamp(),
+        });
+      } catch (e) {
+        console.error("Error adding document");
+      }
     },
   },
   computed: {
@@ -45,7 +67,26 @@ export default {
     },
   },
   components: { ChatMessage, ChatInput },
-  mounted() {
+  async mounted() {
+    // get last 25 messages from firebase
+    const q = query(
+      collection(db, "messages"),
+      orderBy("created", "desc"),
+      limit(25)
+    );
+    const querySnapshot = await getDocs(q);
+    const firebaseMessages = [];
+    querySnapshot.forEach((doc) => {
+      firebaseMessages.push(doc.data());
+    });
+
+    firebaseMessages
+      .slice()
+      .reverse()
+      .forEach((msg) => {
+        this.chatMessages.push(msg);
+      });
+
     // listen for server messages
     socket.on("server-message", (message) => {
       this.chatMessages.push(message);
