@@ -35,7 +35,7 @@ import {
   limit,
 } from "firebase/firestore";
 
-const socket = io("http://localhost:8080/");
+const socket = io(process.env.VUE_APP_SOCKET_IO_SERVER);
 
 export default {
   data() {
