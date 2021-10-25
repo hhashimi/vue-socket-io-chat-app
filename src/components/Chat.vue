@@ -1,20 +1,19 @@
 <template>
-  <div class="flex w-full justify-center">
+  <div class="flex w-full justify-center max-h-screen">
     <div
-      class="flex flex-col bg-blue-100 mt-5 mb-16 mx-5 rounded-md p-5 w-full sm:w-3/4 lg:w-2/4"
+      class="flex flex-col bg-blue-100 mb-16 mx-5 rounded-md px-5 w-full sm:w-3/4 lg:w-2/4"
     >
-      <chat-message
-        v-for="(message, index) in chatMessages"
-        :key="index"
-        :message="message"
-        class="mt-2 h-full"
-      />
-    </div>
+      <div class="overflow-auto">
+        <chat-message
+          v-for="(message, index) in chatMessages"
+          :key="index"
+          :message="message"
+          class="mt-2 h-auto"
+        />
+      </div>
 
-    <chat-input
-      @message-entered="messageEntered"
-      class="fixed bottom-0 w-full sm:w-3/4 lg:w-2/4 px-5"
-    />
+      <chat-input @message-entered="messageEntered" />
+    </div>
   </div>
 </template>
 
