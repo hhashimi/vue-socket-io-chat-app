@@ -32,4 +32,9 @@ This app uses:
   <li>Tailwind CSS</li>
 </ul>
 
-<img src='https://user-images.githubusercontent.com/18535797/138693987-179e09e9-f12a-4e8c-84bb-996d7fba0280.png' width="400"/>
+<img src='https://user-images.githubusercontent.com/18535797/139101302-ac40f5e5-5514-4959-8a8d-99d66bcf79a9.png' width="500"/>
+
+<img src='https://user-images.githubusercontent.com/18535797/139101314-98a895af-a029-455f-aa37-870f901790c1.png' width="500"/>
+
+
+<img src='https://user-images.githubusercontent.com/18535797/139101319-7ad3e22f-1cce-4ca2-8720-0693393a4874.png' width="700"/>
