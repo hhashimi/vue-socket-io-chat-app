@@ -18,7 +18,10 @@
             class="mt-2 h-auto"
           />
         </div>
-
+        <span class="text-xs text-gray-400"
+          >Currently online: {{ onlineUsers }}
+          {{ onlineUsers > 1 ? "users" : "user" }}</span
+        >
         <chat-input @message-entered="messageEntered" />
       </div>
     </div>
@@ -54,6 +57,7 @@ export default {
       chatMessages: [],
       showChannelsMenu: false,
       channel: "TypeScript", // default
+      onlineUsers: 0,
     };
   },
   methods: {
@@ -134,6 +138,11 @@ export default {
     // listen for server messages
     socket.on("server-message", (message) => {
       this.chatMessages.push(message);
+    });
+
+    // listen for online users
+    socket.on("online-users", (onlineUsers) => {
+      this.onlineUsers = onlineUsers;
     });
   },
 };
