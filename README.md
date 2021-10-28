@@ -1,24 +1,14 @@
 # vue-socket-io-chat-app
 
-## Project setup
-```
-npm install
-```
+In the project directory, you can run:
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+#### `npm install` Project setup
 
-### Compiles and minifies for production
-```
-npm run build
-```
+#### `npm run serve` Compiles and hot-reloads for development
 
-### Lints and fixes files
-```
-npm run lint
-```
+#### `npm run build` Compiles and minifies for production
+
+#### `npm run lint` Lints and fixes files
 
 ## About App
 
